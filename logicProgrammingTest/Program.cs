@@ -2,8 +2,9 @@
 //Test is in C:\Projetos\logicProgrammingTest\logicProgrammingTest\prova-logica-de-programacao.pdf
 
 using logicProgrammingTest.Classes;
+using System.Globalization;
 
-Console.Write("Which is exercise do you wanna do it?\nIf you wanna see the find the file 'prova-logica-de-programacao.pdf'.\n");
+Console.Write("Which is exercise do you wanna do it?\nIf you wanna see the file search by 'prova-logica-de-programacao.pdf'.\n");
 var ex = int.Parse(Console.ReadLine().Trim());
 
 switch (ex)
@@ -32,22 +33,22 @@ switch (ex)
 # region  Sequential and Repetitive Structure 
 void Exercise1()
 {
-    Console.Write("How many products do you wanna register?");
-    int loops = Int32.Parse(Console.ReadLine());
+    Console.WriteLine("How many products do you wanna register?");
+    int loops = int.Parse(Console.ReadLine().Trim());
 
     int loopCount = 1;
     var products = new List<Product>();
     while (loops >= loopCount) {
 
 
-        Console.Write($"Code of product - {loopCount}: ");
-        int code = Int32.Parse(Console.ReadLine().Trim());
+        Console.WriteLine($"Code of product - {loopCount}: ");
+        int code = int.Parse(Console.ReadLine().Trim());
 
-        Console.Write($"Amount of product - {loopCount}: ");
-        int amount = Int32.Parse(Console.ReadLine().Trim());
+        Console.WriteLine($"Amount of product - {loopCount}: ");
+        int amount = int.Parse(Console.ReadLine().Trim());
 
-        Console.Write($"Unit price of each product - {loopCount}: ");
-        double unitPrice = Double.Parse(Console.ReadLine().Trim());
+        Console.WriteLine($"Unit price of each product - {loopCount}: ");
+        double unitPrice = double.Parse(Console.ReadLine().Trim(), CultureInfo.InvariantCulture);
 
         products.Add(new Product
         {
@@ -60,10 +61,10 @@ void Exercise1()
         loopCount++; 
     }
 
-    double total = 0.0;
+    double total = 0;
     products.ForEach(p => total += p.Amount * p.Price);
 
-    Console.WriteLine($"You should pay ${ total}");
+    Console.WriteLine($"You should pay ${total:F2}");
  }
 #endregion
 
@@ -71,14 +72,14 @@ void Exercise1()
 #region Conditional structure (Baskara)
 void Exercise2()
 {
-    Console.Write($"Value of a:");
+    Console.WriteLine($"Value of a:");
     var a = double.Parse(Console.ReadLine().Trim());
 
-    Console.Write($"Value of b:");
+    Console.WriteLine($"Value of b:");
     var b = double.Parse(Console.ReadLine().Trim());
 
-    Console.Write($"Value of c:");
-    var c = double.Parse(Console.ReadLine().Trim());
+    Console.WriteLine($"Value of c:");
+    var c = double.Parse(Console.ReadLine().Trim(), CultureInfo.InvariantCulture);
 
     //-b ±√∆
     //onde: ∆= b² − 4ac
@@ -86,21 +87,21 @@ void Exercise2()
     var delta = Math.Pow(b, 2) - (4 * a * c);
     if (a == 0)
     {
-        Console.Write($"Impossible to calculate.\na can't be 0");
+        Console.WriteLine($"Impossible to calculate.\na can't be 0");
         return;
     }
 
     if (delta <= 0)
     {
-        Console.Write($"Impossible to calculate.\nDelta can't be less than or equal to 0");
+        Console.WriteLine($"Impossible to calculate.\nDelta can't be less than or equal to 0");
         return;
     }
 
-    var x1 = (-b + Math.Sqrt(delta)) / (2*a);
+    var x1 = (-b + Math.Sqrt(delta)) / (2 * a);
     var x2 = (-b - Math.Sqrt(delta)) / (2 * a);
 
 
-    Console.Write($"x1 = {x1}\nx2 = {x2}");
+    Console.WriteLine($"x1 = {x1}\nx2 = {x2}");
 
 }
 #endregion
@@ -114,7 +115,7 @@ void Exercise3() {
 
     do
     {
-        Console.Write($"Password: ");
+        Console.WriteLine($"Password: ");
         input = Console.ReadLine();
 
         var message = input == password ? "Allowed Access" : "Invalid password, try again!";
@@ -148,7 +149,7 @@ void Exercise3_2()
         }
     }
 
-    Console.WriteLine($"{listIn.Count()} in \n{listOut.Count} out");
+    Console.WriteLine($"{listIn.Count} in \n{listOut.Count} out");
 }
 
 #endregion
