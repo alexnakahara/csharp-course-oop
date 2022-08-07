@@ -10,22 +10,22 @@ var ex = int.Parse(Console.ReadLine().Trim());
 switch (ex)
 {
     case 1:
-     Exercise1();
+        Exercise1();
         break;
     case 2:
-     Exercise2();
+        Exercise2();
         break;
 
     case 3:
-     Exercise3();
-        break; 
-    
+        Exercise3();
+        break;
+
     case 32:
-     Exercise3_2();
+        Exercise3_2();
         break;
 
     default:
-     Exercise1();
+        Exercise1();
         break;
 }
 
@@ -38,7 +38,8 @@ void Exercise1()
 
     int loopCount = 1;
     var products = new List<Product>();
-    while (loops >= loopCount) {
+    while (loops >= loopCount)
+    {
 
 
         Console.WriteLine($"Code of product - {loopCount}: ");
@@ -56,16 +57,16 @@ void Exercise1()
             Amount = amount,
             Price = unitPrice
 
-        });  
+        });
 
-        loopCount++; 
+        loopCount++;
     }
 
     double total = 0;
     products.ForEach(p => total += p.Amount * p.Price);
 
     Console.WriteLine($"You should pay ${total:F2}");
- }
+}
 #endregion
 
 
@@ -108,7 +109,8 @@ void Exercise2()
 
 
 #region Repetitive and Conditional Structure
-void Exercise3() {
+void Exercise3()
+{
 
     var input = "";
     var password = "2002";
@@ -130,8 +132,8 @@ void Exercise3_2()
     Console.Write($"How many numbers ?");
     var input = int.Parse(Console.ReadLine().Trim());
 
-    var listIn =  new List<int>();
-    var listOut =  new List<int>();
+    var listIn = new List<int>();
+    var listOut = new List<int>();
 
     for (int i = 0; i < input; i++)
     {
@@ -142,7 +144,8 @@ void Exercise3_2()
         {
 
             listIn.Add(number);
-        } else
+        }
+        else
         {
             listOut.Add(number);
 
