@@ -66,18 +66,18 @@ void GetTriangleArea()
 
 void GetProduct()
 {
-    var p = new Product();
 
     Console.WriteLine("Entre os dados do produto:");
     Console.Write("Nome: ");
-    p.Name = Console.ReadLine();
+    string name = Console.ReadLine();
 
     Console.Write("Preço: ");
-    p.Price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+    double price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
     Console.Write("Quantidade no estoque: ");
-    p.Amount = int.Parse(Console.ReadLine());
-
+    int staffAmount = int.Parse(Console.ReadLine());
+    
+    var p = new Product(name, price, staffAmount);
     Console.WriteLine();
     Console.WriteLine("Dados do produto: " + p);
 
