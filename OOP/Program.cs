@@ -21,6 +21,7 @@ switch (ex)
 
     default:
         //Exercise1();
+        GetProductOOP();
         break;
 }
 
@@ -122,3 +123,15 @@ void GetCircuferenceVolume()
 
 #endregion
 
+#region ProdutOop 
+void GetProductOOP()
+{
+    ProductOop p = new ProductOop("TV", 500.00, 10);
+    Console.WriteLine(p.GetName());
+
+    p.SetName("TV 4K"); // change name
+
+    Console.WriteLine(p.GetName()); 
+}
+
+#endregion

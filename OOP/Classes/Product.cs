@@ -9,10 +9,13 @@ namespace OOP.Classes
         public int Amount { get; set; } 
 
         public Product() { }    
-        public Product(string name, double price, int amount)
-        {
+        public Product(string name, double price)
+        { 
             Name = name;
             Price = price;
+        }   
+
+        public Product(string name, double price, int amount): this(name,price) { // gets 2nd constructor 
             Amount = amount;
         }   
 
