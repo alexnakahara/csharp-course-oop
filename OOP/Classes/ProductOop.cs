@@ -1,25 +1,11 @@
 ﻿using System.Globalization;
-using System.Xml.Linq;
+
 
 namespace OOP.Classes
 {
     class ProductOop
     {
         private string _name { get; set; }
-        private double _price { get; set; }
-        private int _amount { get; set; }
-
-        public ProductOop() { }
-        public ProductOop(string name, double price)
-        {
-            _name = name;
-            _price = price;
-        }
-        public ProductOop(string name, double price, int amount) : this(name, price)
-        { // gets 2nd constructor 
-            _amount = amount;
-        }
-
         public string Name
         {
             get { return _name; }
@@ -31,34 +17,38 @@ namespace OOP.Classes
                 }
             }
         }
-        public double Price
-        {
-            get { return _price; }
-        }
-        public int Amount
-        {
+        public double Price { get; private set; }
+        public int Amount { get; private set; }
 
-            get { return _amount; }
+        public ProductOop() { }
+        public ProductOop(string name, double price)
+        {
+            _name = name;
+            Price = price;
         }
-
+        public ProductOop(string name, double price, int amount) : this(name, price)
+        { // gets 2nd constructor 
+            Amount = amount;
+        }
+       
         public double TotalValueStock()
         {
-            return _price * _amount;
+            return Price * Amount;
         }
 
         public void AddAmountProducts(int amount)
         {
-            _amount += amount;
+            Amount += amount;
         }
         public void RemoveAmountProducts(int amount)
         {
-            _amount -= amount;
+            Amount -= amount;
         }
 
         public override string ToString()
         {
-            return $"{_name}, ${_price.ToString("F2", CultureInfo.InvariantCulture)}, {_amount} unidades, Total: ${TotalValueStock().ToString("F2", CultureInfo.InvariantCulture)}";
-
+            return $"{_name}, ${Price.ToString("F2", CultureInfo.InvariantCulture)}, {Amount} unidades, Total: ${TotalValueStock().ToString("F2", CultureInfo.InvariantCulture)}";
+                
         }
 
     }
