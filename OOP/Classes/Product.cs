@@ -8,6 +8,7 @@ namespace OOP.Classes
         public double Price { get; set; } 
         public int Amount { get; set; } 
 
+        public Product() { }    
         public Product(string name, double price, int amount)
         {
             Name = name;

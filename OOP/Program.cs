@@ -78,6 +78,8 @@ void GetProduct()
     int staffAmount = int.Parse(Console.ReadLine());
     
     var p = new Product(name, price, staffAmount);
+    var p2 = new Product { Name= name, Price= price, Amount = staffAmount }; // this way is possible because the class has a default constructor
+
     Console.WriteLine();
     Console.WriteLine("Dados do produto: " + p);
 
