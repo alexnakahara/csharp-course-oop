@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Xml.Linq;
 
 namespace OOP.Classes
 {
@@ -19,28 +20,27 @@ namespace OOP.Classes
             _amount = amount;
         }
 
-        #region Getters and setters
-        public string GetName()
+        public string Name
         {
-            return _name;
-        }
-        public void SetName(string name)
-        {
-            if (name != null && name.Length > 1)
+            get { return _name; }
+            set
             {
-                _name = name;
+                if (value != null && value.Length > 1)
+                {
+                    _name = value;
+                }
             }
         }
-        public double GetPrice()
+        public double Price
         {
-            return _price;
+            get { return _price; }
         }
-        public int GetAmount()
+        public int Amount
         {
-            return _amount;
+
+            get { return _amount; }
         }
 
-        #endregion
         public double TotalValueStock()
         {
             return _price * _amount;
