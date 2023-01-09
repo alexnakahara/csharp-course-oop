@@ -3,30 +3,42 @@
 using OOP.Classes;
 using System.Globalization;
 
-Console.Write("Object-oriented programming (OOP).\nWhich is exercise do you wanna do it? ");
-var ex = int.Parse(Console.ReadLine().Trim());
-
-switch (ex)
+bool isContinue = false;
+do
 {
-    case 1:
-        GetTriangleArea();
-        break;
-    case 2:
-        GetProduct();
-        break;
+    Console.WriteLine("Object-oriented programming (OOP).\nWhich is exercise do you wanna do it? ");
+    int exercise = int.Parse(Console.ReadLine().Trim());
 
-    case 3:
-        GetCircuferenceVolume();
-        break;
+    switch (exercise)
+    {
+        case 1:
+            GetTriangleArea();
+            break;
+        case 2:
+            GetProduct();
+            break;
 
-    default:
-        //Exercise1();
-        GetProductOOP();
-        break;
-}
+        case 3:
+            GetCircuferenceVolume();
+            break;
+
+        case 4:
+            OpenBankAccount();
+            break;
+
+        default:
+            //Exercise1();
+            GetProductOOP();
+            break;
+    }
+
+    Console.Write("\nDo you want continue executing the exercices? (y/n)\n");
+    isContinue = Console.ReadLine().Trim().ToLower() == "y";
+    Console.Clear();
+
+} while (isContinue);
 
 // Exercises 
-
 #region Triangle Area
 
 void GetTriangleArea()
@@ -56,9 +68,6 @@ void GetTriangleArea()
     {
         Console.WriteLine("Maior área: Y");
     }
-
-
-
 }
 #endregion
 
@@ -77,9 +86,9 @@ void GetProduct()
 
     Console.Write("Quantidade no estoque: ");
     int staffAmount = int.Parse(Console.ReadLine());
-    
+
     var p = new Product(name, price, staffAmount);
-    var p2 = new Product { Name= name, Price= price, Amount = staffAmount }; // this way is possible because the class has a default constructor
+    var p2 = new Product { Name = name, Price = price, Amount = staffAmount }; // this way is possible because the class has a default constructor
 
     Console.WriteLine();
     Console.WriteLine("Dados do produto: " + p);
@@ -132,7 +141,45 @@ void GetProductOOP()
 
     p.Name = "TV 4K"; // change name
 
-    Console.WriteLine($"Name: {p.Name}\nPrice: {p.Price}"); 
+    Console.WriteLine($"Name: {p.Name}\nPrice: {p.Price}");
+}
+
+#endregion
+
+#region Bank account
+void OpenBankAccount()
+{
+    BankAccount account;
+
+    Console.Write("Entre o número da conta: ");
+    int id = int.Parse(Console.ReadLine());
+    
+    Console.Write("Entre o titular da conta: ");
+    string name = Console.ReadLine();
+
+    Console.Write("Haverá depósito inicial (s/n)? ");
+    bool hasInitDeposit = Console.ReadLine().ToUpper() == "S";
+
+    if (hasInitDeposit)
+    {
+        Console.Write("Entre o valor de depósito inicial: ");
+        double amount = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        account = new BankAccount(id, name, amount);
+    }
+    else
+    {
+        account = new BankAccount(id, name);
+    }
+
+    Console.Write(account.ToString());
+
+    Console.Write("\nEntre um valor para depósito: ");
+    account.DepositMoney(double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture));
+    Console.WriteLine(account.ToString());
+
+    Console.Write("\nEntre um valor para saque: ");
+    account.WithdrawMoney(double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture));
+    Console.Write(account.ToString());
 }
 
 #endregion
