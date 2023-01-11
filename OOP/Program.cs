@@ -2,6 +2,7 @@
 
 using OOP.Classes;
 using System.Globalization;
+using System.Xml;
 
 bool isContinue = false;
 do
@@ -24,6 +25,9 @@ do
 
         case 4:
             OpenBankAccount();
+            break;
+        case 5:
+            Arrays();
             break;
 
         default:
@@ -153,7 +157,7 @@ void OpenBankAccount()
 
     Console.Write("Entre o número da conta: ");
     int id = int.Parse(Console.ReadLine());
-    
+
     Console.Write("Entre o titular da conta: ");
     string name = Console.ReadLine();
 
@@ -182,4 +186,39 @@ void OpenBankAccount()
     Console.Write(account.ToString());
 }
 
+#endregion
+
+#region Class 6
+
+void Arrays()
+{
+    var bedRoom = new Bedroom[10];
+
+    Console.Write("How many students? ");
+    var numStudents = int.Parse(Console.ReadLine());
+
+    for (int i = 0; i < numStudents; i++)
+    {
+        Console.WriteLine();
+        Console.Write("Which bedroom? ");
+        var numBedroom = int.Parse(Console.ReadLine());
+
+        Console.Write("Name? ");
+        var name = Console.ReadLine();
+
+        Console.Write("Email: ");
+        var email = Console.ReadLine();
+
+        Bedroom student = new(name, email);
+        bedRoom[numBedroom] = student;
+    }
+
+    Console.WriteLine();
+    Console.WriteLine("Quartos ocupados:");
+    for (int i = 0; i < bedRoom.Length; i++)
+    {
+        if (bedRoom[i] != null)
+            Console.WriteLine($"{i}: {bedRoom[i].StudentName}, {bedRoom[i].Email}");
+    }
+}
 #endregion
