@@ -2,7 +2,6 @@
 
 using OOP.Classes;
 using System.Globalization;
-using System.Xml;
 
 bool isContinue = false;
 do
@@ -13,23 +12,21 @@ do
     switch (exercise)
     {
         case 1:
-            GetTriangleArea();
-            break;
+            GetTriangleArea(); break;
         case 2:
-            GetProduct();
-            break;
-
+            GetProduct(); break;
         case 3:
-            GetCircuferenceVolume();
-            break;
-
+            GetCircuferenceVolume(); break;
         case 4:
-            OpenBankAccount();
-            break;
+            OpenBankAccount(); break;
         case 5:
-            Arrays();
-            break;
-
+            Arrays(); break;
+        case 6:
+            ModifiersRefOut(); break;
+        case 7:
+            Lists(); break;
+        case 8:
+            MatrizFindDimensions(); break;
         default:
             //Exercise1();
             GetProductOOP();
@@ -75,7 +72,6 @@ void GetTriangleArea()
 }
 #endregion
 
-
 #region Product
 
 void GetProduct()
@@ -118,7 +114,6 @@ void GetProduct()
 
 #endregion
 
-
 #region Calc(statics examples)
 
 void GetCircuferenceVolume()
@@ -135,7 +130,6 @@ void GetCircuferenceVolume()
 }
 
 #endregion
-
 
 #region ProdutOop 
 void GetProductOOP()
@@ -220,5 +214,151 @@ void Arrays()
         if (bedRoom[i] != null)
             Console.WriteLine($"{i}: {bedRoom[i].StudentName}, {bedRoom[i].Email}");
     }
+}
+
+void ModifiersRefOut()
+{
+    int numRef = 5; // "ref" need init with value
+    Calculator.TripleRef(ref numRef);
+    Console.WriteLine($"Ref: {numRef}");
+
+    int origin = 10;
+    int triple; // "Out" doesnt need init just named
+    Calculator.TripleOut(origin, out triple);
+    Console.WriteLine($"Out: {triple}");
+}
+
+void Lists()
+{
+    List<string> list = new List<string>
+    {
+        "Alex",
+        "James",
+        "Nill",
+        "Nick",
+        "Anna",
+        "Marco"
+    };
+
+    string s1 = list.Find(x => x[0] == 'A');
+    Console.WriteLine("First 'A': " + s1);
+
+    string s2 = list.FindLast(x => x[0] == 'A');
+    Console.WriteLine("Last 'A': " + s2);
+
+    Console.WriteLine("Find index");
+    int pos1 = list.FindIndex(x => x[0] == 'A');
+    Console.WriteLine("First position index 'A': " + pos1);
+
+    int pos2 = list.FindLastIndex(x => x[0] == 'A');
+    Console.WriteLine("Last position index 'A': " + pos2);
+
+    Console.WriteLine();
+    Console.WriteLine("Filtered List by Length = 5");
+    List<string> list2 = list.FindAll(x => x.Length == 5);
+    foreach (var item in list2)
+    {
+        Console.WriteLine(item);
+    }
+
+    list.Remove("James");
+    Console.WriteLine("------------- Removing James");
+    foreach (var item in list)
+    {
+        Console.WriteLine(item);
+    }
+
+    list.RemoveAll(x => x[0] == 'A');
+    Console.WriteLine("------------- Removing all items that has first letter 'A'");
+    foreach (var item in list)
+    {
+        Console.WriteLine(item);
+    }
+}
+
+void Matriz()
+{
+    double[,] mat = new double[2, 3];
+
+    Console.WriteLine(mat.Length);
+    Console.WriteLine("Gets first dimension: ", mat.Rank);
+    Console.WriteLine("Linhas: ", mat.GetLength(0));
+    Console.WriteLine("Colunas: ", mat.GetLength(1));
+}
+void MatrizFindDimensions()
+{
+
+    Console.Write("Coloque o numero de linhas: ");
+    int lines = int.Parse(Console.ReadLine());
+
+    Console.Write("Coloque o numero de colunas: ");
+    int cols = int.Parse(Console.ReadLine());
+
+    double[,] mat = new double[lines, cols];
+
+    for (int i = 0; i < lines; i++)
+    {
+        Console.WriteLine($"Escreva os numeros da linha {i}: ");
+        string[] arr = Console.ReadLine().Split(" ");
+
+        for (int j = 0; j < cols; j++)
+        {
+            mat[i, j] = int.Parse(arr[j]);
+        }
+    }
+
+    Console.WriteLine("\n------- show matriz ------\n");
+    for (int i = 0; i < lines; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            Console.Write(mat[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+
+    Console.Write("Numero pra achar: ");
+    int numFind = int.Parse(Console.ReadLine());
+    Console.WriteLine();
+
+    for (int i = 0; i < lines; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            double item = mat[i, j];
+            if (item == numFind)
+            {
+                double itemLeft, itemRight, itemUp, itemDown;
+
+                Console.WriteLine($"Position {i},{j}:");
+                if (j != 0) // it is not first column 
+                {
+                    itemLeft = mat[i, j - 1];
+                    Console.WriteLine($"Left: {itemLeft}");
+                }
+
+                if (j != (mat.GetLength(1) - 1)) //last column
+                {
+                    itemRight = mat[i, j + 1];
+                    Console.WriteLine("Right: " + itemRight);
+                }
+
+                if (i != 0) // it is not first line 
+                {
+                    itemUp= mat[i - 1, j];
+                    Console.WriteLine("Up: " + itemUp);
+                }
+
+                if (i != (mat.GetLength(0) - 1)) // last line
+                {
+                    itemDown = mat[i + 1, j];
+                    Console.WriteLine("Down: " + itemDown);
+                }
+
+            }
+        }
+        Console.WriteLine();
+    }
+
 }
 #endregion

@@ -14,6 +14,16 @@
             return 4.0 / 3.0 * Pi * Math.Pow(raio, 3);   
         }
 
+        public static void TripleRef(ref int num)
+        {
+            num *= 3; 
+        }
+
+        public static void TripleOut(int num, out int result)
+        {
+          result = num * 3;
+        }
+
 
     }
 }
