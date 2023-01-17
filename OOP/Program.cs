@@ -2,6 +2,7 @@
 
 using OOP.Classes;
 using OOP.Classes.Entities;
+using OOP.Classes.SocialMediaLikes;
 using System.Globalization;
 
 bool isContinue = false;
@@ -30,6 +31,8 @@ do
             MatrizFindDimensions(); break;
         case 9:
             EnumWorkers(); break; 
+        case 10:
+            SocialMediaLikes(); break;
         default:
             //Exercise1();
             GetProductOOP();
@@ -379,8 +382,8 @@ void OrderEnum()
 
     OrderStatus os = (OrderStatus)Enum.Parse(typeof(OrderStatus), "Delivered");
     Console.WriteLine(os);
-}
-
+}           
+    
 void EnumWorkers()
 {
     Console.Write("Enter department's name: ");
@@ -427,4 +430,18 @@ void EnumWorkers()
     Console.WriteLine("Department: " + worker.Department.Name);
     Console.WriteLine("Income for " + monthAndYear + ": " + worker.Income(year, month).ToString("F2", CultureInfo.InvariantCulture));
 }
+
+void SocialMediaLikes()
+{
+    Comment c1= new Comment("Have a nice trip!");
+    Comment c2= new Comment("Wow that's awesome");
+
+    Post p1 = new(DateTime.Parse("21/06/2018 13:05:44"), "Traveling to New Zealand","I'm goint to visit this wonderful country", 12);
+    p1.AddComment(c1);
+    p1.AddComment(c2);
+
+    Console.WriteLine(p1);
+
+}
+
 #endregion
