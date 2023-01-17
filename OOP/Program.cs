@@ -30,12 +30,13 @@ do
         case 8:
             MatrizFindDimensions(); break;
         case 9:
-            EnumWorkers(); break; 
+            EnumWorkers(); break;
         case 10:
             SocialMediaLikes(); break;
         default:
             //Exercise1();
-            GetProductOOP();
+            //GetProductOOP();
+            OrderChallenge();
             break;
     }
 
@@ -44,6 +45,7 @@ do
     Console.Clear();
 
 } while (isContinue);
+
 
 // Exercises 
 #region Triangle Area
@@ -382,17 +384,17 @@ void OrderEnum()
 
     OrderStatus os = (OrderStatus)Enum.Parse(typeof(OrderStatus), "Delivered");
     Console.WriteLine(os);
-}           
-    
+}
+
 void EnumWorkers()
 {
     Console.Write("Enter department's name: ");
     string deptName = Console.ReadLine();
     Console.WriteLine("Enter worker data:");
-    
+
     Console.Write("Name: ");
     string name = Console.ReadLine();
-    
+
     Console.Write("Level (Junior/MidLevel/Senior)");
     var level = (WorkerLevel)Enum.Parse(typeof(WorkerLevel), Console.ReadLine());
 
@@ -400,23 +402,23 @@ void EnumWorkers()
     double baseSalary = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
     Department dept = new Department(deptName);
-    Worker worker= new Worker(name, level, baseSalary, dept);
+    Worker worker = new Worker(name, level, baseSalary, dept);
 
     Console.Write("How many contracts to this worker? ");
     int n = int.Parse(Console.ReadLine());
 
     for (int i = 0; i < n; i++)
     {
-        Console.WriteLine($"Enter #{i +1} contract data: ");
+        Console.WriteLine($"Enter #{i + 1} contract data: ");
         Console.Write("Date (DD/MM/YYYY): ");
-        DateTime  date = DateTime.Parse(Console.ReadLine());
+        DateTime date = DateTime.Parse(Console.ReadLine());
 
         Console.Write("Value per hour: ");
         double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
         Console.Write("Duration (hours): ");
-        int hours = int.Parse(Console.ReadLine());  
+        int hours = int.Parse(Console.ReadLine());
 
-        HourContract contract =  new HourContract(date,valuePerHour, hours);
+        HourContract contract = new HourContract(date, valuePerHour, hours);
         worker.AddContract(contract);
     }
 
@@ -433,15 +435,61 @@ void EnumWorkers()
 
 void SocialMediaLikes()
 {
-    Comment c1= new Comment("Have a nice trip!");
-    Comment c2= new Comment("Wow that's awesome");
+    Comment c1 = new Comment("Have a nice trip!");
+    Comment c2 = new Comment("Wow that's awesome");
 
-    Post p1 = new(DateTime.Parse("21/06/2018 13:05:44"), "Traveling to New Zealand","I'm goint to visit this wonderful country", 12);
+    Post p1 = new(DateTime.Parse("21/06/2018 13:05:44"), "Traveling to New Zealand", "I'm goint to visit this wonderful country", 12);
     p1.AddComment(c1);
     p1.AddComment(c2);
 
     Console.WriteLine(p1);
 
 }
+
+void OrderChallenge()
+{
+
+    Console.WriteLine("Enter cliente data:");
+    Console.Write("Name: ");
+    string name = Console.ReadLine();
+
+    Console.Write("E-mail: ");
+    string email = Console.ReadLine();
+
+    Console.Write("Birth date (DD/MM/YYYY): ");
+    DateTime date = DateTime.Parse(Console.ReadLine());
+
+    Console.WriteLine("Enter order data:");
+    Console.Write("Status: ");
+    var status = (OOP.Classes.OrderChallenge.OrderStatusEnum)Enum.Parse(typeof(OOP.Classes.OrderChallenge.OrderStatusEnum), Console.ReadLine());
+
+    var client = new OOP.Classes.OrderChallenge.Client(name, email, date);
+    var order = new OOP.Classes.OrderChallenge.Order(DateTime.Now, status, client);
+
+    Console.Write("How many items to this order? ");
+    int numOrders = int.Parse(Console.ReadLine());
+
+    for (int i = 0; i < numOrders; i++)
+    {
+        Console.WriteLine($"Enter #{i + 1} item data:");
+
+        Console.Write("Product Name: ");
+        string productName = Console.ReadLine();
+
+        Console.Write("Product price: ");
+        double price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+        Console.Write("Quantity: ");
+        int quantity = int.Parse(Console.ReadLine());
+
+        OOP.Classes.OrderChallenge.ProductItem product = new OOP.Classes.OrderChallenge.ProductItem(productName, price);
+        order.Items.Add(new OOP.Classes.OrderChallenge.OrderItem(quantity, product));
+    }
+
+
+    Console.WriteLine(order);
+
+}
+
 
 #endregion
