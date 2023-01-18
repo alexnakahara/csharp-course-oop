@@ -2,15 +2,11 @@
 
 using OOP.Classes;
 using OOP.Classes.AbstractShape;
-using OOP.Classes.AbstractShape.Enums;
 using OOP.Classes.Employee;
 using OOP.Classes.Entities;
 using OOP.Classes.OrderTicket;
 using OOP.Classes.SocialMediaLikes;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Globalization;
-using System.Transactions;
 using Color = OOP.Classes.AbstractShape.Enums.Color;
 
 bool isContinue = false;

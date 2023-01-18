@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "logicProgrammingTest", "logicProgrammingTest\logicProgrammingTest.csproj", "{95C191BB-0293-4160-B72E-4CAFC12093C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP", "OOP\OOP.csproj", "{BC786F61-4EEA-44CB-A763-A96F83E05217}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOP", "OOP\OOP.csproj", "{BC786F61-4EEA-44CB-A763-A96F83E05217}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chess-game", "Chess Game\chess-game.csproj", "{06B39434-1B40-4F98-920F-01A75BE92389}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BC786F61-4EEA-44CB-A763-A96F83E05217}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC786F61-4EEA-44CB-A763-A96F83E05217}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC786F61-4EEA-44CB-A763-A96F83E05217}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06B39434-1B40-4F98-920F-01A75BE92389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B39434-1B40-4F98-920F-01A75BE92389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B39434-1B40-4F98-920F-01A75BE92389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B39434-1B40-4F98-920F-01A75BE92389}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
