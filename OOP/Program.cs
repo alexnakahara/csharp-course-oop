@@ -1,9 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using OOP.Classes;
+using OOP.Classes.AbstractShape;
+using OOP.Classes.AbstractShape.Enums;
+using OOP.Classes.Employee;
 using OOP.Classes.Entities;
+using OOP.Classes.OrderTicket;
 using OOP.Classes.SocialMediaLikes;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
+using System.Transactions;
+using Color = OOP.Classes.AbstractShape.Enums.Color;
 
 bool isContinue = false;
 do
@@ -33,10 +41,15 @@ do
             EnumWorkers(); break;
         case 10:
             SocialMediaLikes(); break;
+        case 11:
+            GetPayEmployee(); break;
+        case 12:
+            GetTotalPrice(); break;
         default:
             //Exercise1();
             //GetProductOOP();
-            OrderChallenge();
+            //OrderChallenge();
+            AbstractShape();
             break;
     }
 
@@ -371,7 +384,6 @@ void MatrizFindDimensions()
 }
 #endregion
 
-
 #region Class 9
 
 void OrderEnum()
@@ -492,4 +504,143 @@ void OrderChallenge()
 }
 
 
+#endregion
+
+#region Class 10(Inheritance, Polymorphism and Casting)
+
+void GetPayEmployee()
+{
+    var list = new List<Employee>();
+
+    Console.Write("Enter the number of employee: ");
+    int n = int.Parse(Console.ReadLine());
+
+    for (int i = 0; i < n; i++)
+    {
+        Console.WriteLine($"Employee #{i + 1} data:");
+
+        Console.Write("Outsourced (y/n)? ");
+        char ch = char.Parse(Console.ReadLine());
+
+        Console.Write("Name: ");
+        string name = Console.ReadLine();
+
+        Console.Write("Hours: ");
+        int hours = int.Parse(Console.ReadLine());
+
+        Console.Write("Value per Hour: ");
+        double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+        if (ch == 'y')
+        {
+            Console.Write("Additional charge: ");
+            double additionalCharge = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            list.Add(new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge));
+        }
+        else
+        {
+            list.Add(new Employee(name, hours, valuePerHour));
+        }
+    }
+
+    Console.WriteLine();
+    Console.WriteLine("Payments:");
+
+    foreach (Employee item in list)
+    {
+        Console.WriteLine(item.Name + " - $" + item.Payment().ToString("F2", CultureInfo.InvariantCulture));
+    }
+}
+
+void GetTotalPrice()
+{
+    var list = new List<ProductTicket>();
+    Console.Write("Enter the number of products: ");
+    int n = int.Parse(Console.ReadLine());
+
+    for (int i = 0; i < n; i++)
+    {
+        Console.WriteLine($"Product #{i + 1} data:");
+        Console.Write("Common, used or imported (c/u/i)? ");
+        char model = char.Parse(Console.ReadLine());
+
+        Console.Write("Name: ");
+        string name = Console.ReadLine();
+
+        Console.Write("Price: ");
+        double price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+        if (model == 'i')
+        {
+            Console.Write("Customs fee: ");
+            double customsFee = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            list.Add(new ImportedProduct(name, price, customsFee));
+        }
+        else if (model == 'u')
+        {
+            Console.Write("Manufacture date (DD/MM/YYYY): ");
+            var manuFac = DateTime.Parse(Console.ReadLine());
+
+            list.Add(new UsedProduct(name, price, manuFac));
+        }
+        else
+        {
+            list.Add(new ProductTicket(name, price));
+        }
+    }
+
+    Console.WriteLine();
+    Console.WriteLine("PRICE TAGS:");
+
+    foreach (ProductTicket item in list)
+    {
+        Console.WriteLine(item.PriceTag());
+    }
+}
+
+
+void AbstractShape()
+{
+    var list = new List<Shape>();
+
+    Console.Write("Enter the number of shapes: ");
+    int n = int.Parse(Console.ReadLine());
+
+    for (int i = 0; i < n; i++)
+    {
+        Console.WriteLine($"Shape #{i + 1} data:");
+        
+        Console.Write("Rectangle or Circle (r/c)? ");
+        char ch = char.Parse(Console.ReadLine());
+
+        Console.Write("Color (Black/Blue/Red)");
+        var color = Enum.Parse<Color>(Console.ReadLine());
+
+        if (ch == 'r')
+        {
+            Console.Write("Width: ");
+            double width = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            
+            Console.Write("Height: ");
+            double height = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            list.Add(new Retangle(width, height, color));
+        }
+        else
+        {
+            Console.Write("Radius: ");
+            double radius = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            list.Add(new Circle(radius, color));
+        }
+    }
+
+    Console.WriteLine();
+    Console.WriteLine("SHAPE AREAS: ");
+
+    foreach (Shape shape in list)
+    {
+        Console.WriteLine(shape.Area().ToString("F2", CultureInfo.InvariantCulture));
+    }
+}
 #endregion
