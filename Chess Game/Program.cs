@@ -9,20 +9,25 @@ namespace chess_game
     {
         static void Main(string[] args)
         {
-            try
-            {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+            PosicaoXadrez pos = new('c', 7);
 
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 9));
-                tab.ColocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 0));
+            Console.WriteLine(pos);
 
-                Tela.ImprimirTabuleiro(tab);
-            }
-            catch (TabuleiroException e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            Console.WriteLine(pos.ToPosicao());
+            //try
+            //{
+            //    Tabuleiro tab = new Tabuleiro(8, 8);
+
+            //    tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
+            //    tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 9));
+            //    tab.ColocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 0));
+
+            //    Tela.ImprimirTabuleiro(tab);
+            //}
+            //catch (TabuleiroException e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //}
 
             Console.ReadLine();
         }
