@@ -75,7 +75,7 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
-            //esquera
+            //esquerda
             pos.DefinirValor(Posicao.Linha + 1, Posicao.Coluna - 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
