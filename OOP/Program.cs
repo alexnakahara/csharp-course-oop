@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using OOP.Classes;
+﻿using OOP.Classes;
 using OOP.Classes.AbstractShape;
 using OOP.Classes.Employee;
 using OOP.Classes.Entities;
@@ -41,6 +39,8 @@ do
             GetPayEmployee(); break;
         case 12:
             GetTotalPrice(); break;
+        case 13:
+            ManageFile(); break;
         default:
             //Exercise1();
             //GetProductOOP();
@@ -594,7 +594,6 @@ void GetTotalPrice()
     }
 }
 
-
 void AbstractShape()
 {
     var list = new List<Shape>();
@@ -639,4 +638,47 @@ void AbstractShape()
         Console.WriteLine(shape.Area().ToString("F2", CultureInfo.InvariantCulture));
     }
 }
+
+void ManageFile()
+{
+    string path = @"C:\Projetos\csharp-course-oop\myfolder\Produtos\lista.csv";
+
+    try
+    {
+
+        using FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
+        using StreamReader sr = new StreamReader(fs);
+        var listProducts = new List<Product>(); 
+        while (!sr.EndOfStream)
+        {
+            string[] line = sr.ReadLine().Split(",");
+            listProducts.Add(new Product(line[0], double.Parse(line[1], CultureInfo.InvariantCulture), int.Parse(line[2])));
+
+            Console.WriteLine(line);
+        }
+
+        foreach (var item in listProducts)
+        {
+            Console.WriteLine(item.ToString());
+        }
+
+        string newfolderPath = Path.GetDirectoryName(path) + @"\out";
+        Directory.CreateDirectory(newfolderPath);
+        
+        using StreamWriter sw = File.AppendText(newfolderPath + @"\summary.csv");
+        foreach (var item in listProducts)
+        {
+            sw.WriteLine(item.ToString());
+        }
+
+
+    }
+    catch (IOException e)
+    {
+
+        Console.WriteLine("An error occured");
+        Console.WriteLine(e.Message);
+    }
+}
 #endregion
+
