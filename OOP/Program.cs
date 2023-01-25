@@ -653,13 +653,6 @@ void ManageFile()
         {
             string[] line = sr.ReadLine().Split(",");
             listProducts.Add(new Product(line[0], double.Parse(line[1], CultureInfo.InvariantCulture), int.Parse(line[2])));
-
-            Console.WriteLine(line);
-        }
-
-        foreach (var item in listProducts)
-        {
-            Console.WriteLine(item.ToString());
         }
 
         string newfolderPath = Path.GetDirectoryName(path) + @"\out";

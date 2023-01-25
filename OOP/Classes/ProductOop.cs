@@ -48,7 +48,6 @@ namespace OOP.Classes
         public override string ToString()
         {
             return $"{_name}, ${Price.ToString("F2", CultureInfo.InvariantCulture)}, {Amount} unidades, Total: ${TotalValueStock().ToString("F2", CultureInfo.InvariantCulture)}";
-                
         }
 
     }
