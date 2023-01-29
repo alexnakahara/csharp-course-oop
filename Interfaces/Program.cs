@@ -13,7 +13,37 @@ switch (num)
     case 1: RentCar(); break;
 
     case 2: ContractInstallments(); break;   
-    case 3: InheritanceWithInterface(); break;   
+    case 3: InheritanceWithInterface(); break;
+    case 4: CompareInterface(); break;
+}
+
+void CompareInterface ()
+{
+    string path = @"C:\Projetos\csharp-course-oop\interfaces\Assets\in.txt";
+
+    try
+    {
+        using (StreamReader sr = File.OpenText(path))
+        {
+            var list = new List<Employee>();
+            while (!sr.EndOfStream)
+            {
+                list.Add(new Employee(sr.ReadLine()));
+            }
+
+            list.Sort();
+            foreach(Employee item in list) {
+                Console.WriteLine(item);
+            }
+
+        }
+
+    }
+    catch (IOException e)
+    {
+        Console.WriteLine("An error occurred");
+        Console.WriteLine(e.Message);
+    }
 }
 
 void InheritanceWithInterface()
