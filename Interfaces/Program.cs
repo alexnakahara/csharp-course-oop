@@ -18,13 +18,13 @@ switch (num)
 
 void InheritanceWithInterface()
 {
-    Shape s1 = new Circle()
+    IShape s1 = new Circle()
     {
         Radius = 2,
         Color = Color.White
     };
     
-    Shape s2 = new Rectangle()
+    IShape s2 = new Rectangle()
     {
         Width = 3.5,
         Height = 4.2,

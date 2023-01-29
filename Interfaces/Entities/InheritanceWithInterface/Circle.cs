@@ -2,7 +2,7 @@
 
 namespace Interfaces.Entities.InheritanceWithInterface
 {
-    class Circle : Shape
+    class Circle : AbstractShape
     {
         public double Radius { get; set; }
 

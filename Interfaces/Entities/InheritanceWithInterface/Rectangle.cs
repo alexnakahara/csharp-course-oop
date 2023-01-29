@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Interfaces.Entities.InheritanceWithInterface
 {
-    public class Rectangle : Shape
+    public class Rectangle : AbstractShape
     {
         public double Width { get; set; }
         public double Height { get; set; }
