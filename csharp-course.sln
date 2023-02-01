@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "logicProgrammingTest", "log
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOP", "OOP\OOP.csproj", "{BC786F61-4EEA-44CB-A763-A96F83E05217}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chess-game", "Chess Game\chess-game.csproj", "{06B39434-1B40-4F98-920F-01A75BE92389}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chess-game", "Chess Game\Chess-game.csproj", "{06B39434-1B40-4F98-920F-01A75BE92389}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileManager", "FileManager\FileManager.csproj", "{FE206EEC-B752-4703-A020-07A834BCE286}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{6677EB82-09F4-4E51-8B84-A7F3353411AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "Interfaces\Interfaces.csproj", "{6677EB82-09F4-4E51-8B84-A7F3353411AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

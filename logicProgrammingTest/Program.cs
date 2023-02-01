@@ -25,12 +25,27 @@ switch (ex)
         break;
 
     default:
-        Exercise1();
+        //Exercise1();
+        Test();
         break;
 }
 
+void Test()
+{
+    string a = null;
 
-# region  Sequential and Repetitive Structure 
+    var list = new List<string>() { 
+        "alex", "test"
+    };
+
+    var b =list.Contains(a);
+
+    Console.WriteLine(b);
+
+}
+
+
+#region  Sequential and Repetitive Structure 
 void Exercise1()
 {
     Console.WriteLine("How many products do you wanna register?");
@@ -40,23 +55,19 @@ void Exercise1()
     var products = new List<Product>();
     while (loops >= loopCount)
     {
+        Console.WriteLine($" Tyoe: Code of product, Amount,  Unit price - {loopCount}: ");
+        string str = Console.ReadLine();
+        var array = str.Split(" ");
 
-
-        Console.WriteLine($"Code of product - {loopCount}: ");
-        int code = int.Parse(Console.ReadLine().Trim());
-
-        Console.WriteLine($"Amount of product - {loopCount}: ");
-        int amount = int.Parse(Console.ReadLine().Trim());
-
-        Console.WriteLine($"Unit price of each product - {loopCount}: ");
-        double unitPrice = double.Parse(Console.ReadLine().Trim(), CultureInfo.InvariantCulture);
+        int code = int.Parse(array[0]);
+        int amount = int.Parse(array[1]);
+        double unitPrice = double.Parse(array[2], CultureInfo.InvariantCulture);
 
         products.Add(new Product
         {
             Code = code,
             Amount = amount,
             Price = unitPrice
-
         });
 
         loopCount++;
