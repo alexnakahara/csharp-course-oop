@@ -2,6 +2,7 @@
 using OOP.Classes.AbstractShape;
 using OOP.Classes.Employee;
 using OOP.Classes.Entities;
+using OOP.Classes.Generics;
 using OOP.Classes.OrderTicket;
 using OOP.Classes.SocialMediaLikes;
 using System.Globalization;
@@ -41,11 +42,14 @@ do
             GetTotalPrice(); break;
         case 13:
             ManageFile(); break;
+        case 14:
+            AbstractShape(); break;
+        case 15:
+            PrintGenerics(); break;
         default:
             //Exercise1();
             //GetProductOOP();
             //OrderChallenge();
-            AbstractShape();
             break;
     }
 
@@ -604,7 +608,7 @@ void AbstractShape()
     for (int i = 0; i < n; i++)
     {
         Console.WriteLine($"Shape #{i + 1} data:");
-        
+
         Console.Write("Rectangle or Circle (r/c)? ");
         char ch = char.Parse(Console.ReadLine());
 
@@ -615,7 +619,7 @@ void AbstractShape()
         {
             Console.Write("Width: ");
             double width = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            
+
             Console.Write("Height: ");
             double height = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
@@ -648,7 +652,7 @@ void ManageFile()
 
         using FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
         using StreamReader sr = new StreamReader(fs);
-        var listProducts = new List<Product>(); 
+        var listProducts = new List<Product>();
         while (!sr.EndOfStream)
         {
             string[] line = sr.ReadLine().Split(",");
@@ -657,7 +661,7 @@ void ManageFile()
 
         string newfolderPath = Path.GetDirectoryName(path) + @"\out";
         Directory.CreateDirectory(newfolderPath);
-        
+
         using StreamWriter sw = File.AppendText(newfolderPath + @"\summary.csv");
         foreach (var item in listProducts)
         {
@@ -675,3 +679,40 @@ void ManageFile()
 }
 #endregion
 
+#region Class 14 Generics
+
+void PrintGenerics()
+{
+    var printService = new PrintService<int>();
+
+    Console.Write("How many values? ");
+    int n = int.Parse(Console.ReadLine());
+
+    for (int i = 0; i < n; i++)
+    {
+        int x = int.Parse(Console.ReadLine());
+        printService.AddValue(x);
+    }
+
+    printService.Print();
+    Console.WriteLine($"\nFirst: {printService.First()}");
+
+
+    Console.WriteLine("\n--------- Using Generics w/ strings ----------\n");
+
+    var printService2 = new PrintService<string>();
+
+    Console.Write("How many values? ");
+    int n2 = int.Parse(Console.ReadLine());
+
+    for (int i = 0; i < n2; i++)
+    {
+        string x = Console.ReadLine();
+        printService2.AddValue(x);
+    }
+
+    printService2.Print();
+    Console.WriteLine($"\nFirst: {printService2.First()}");
+
+}
+#endregion
