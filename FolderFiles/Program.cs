@@ -30,4 +30,17 @@ Directory.Delete($@"{folderName}/{subFolderName}");
 
 #endregion
 
+#region Files and FilesInfo
+
+var file = @"pasta\texto.txt";
+if (!File.Exists(file))
+{
+    File.CreateText(file);
+}
+
+var fileInfo = new FileInfo(file);
+Console.WriteLine($"Nome: {fileInfo.Name}, Tamanho: {fileInfo.Length}, Data de atualização: {fileInfo.LastWriteTime}");
+
+#endregion
+
 Console.ReadKey();
